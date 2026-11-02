@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="caly-concept" content="v2-kimi-sonder-monochrome">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta name="description" content="caly is pre-launch software for law firms: turning lawyers’ verified corrections into reusable private tests for AI on the firm’s real legal work.">
+  <title>caly — Making legal AI learn from the work</title>
+  <style>
+    @font-face{font-family:'Plex Sans';src:url('../assets/plex-sans-normal.woff2') format('woff2');font-style:normal;font-weight:400 500;font-display:swap}
+    @font-face{font-family:'Plex Mono';src:url('../assets/plex-mono-normal-400.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+    @font-face{font-family:'Plex Mono';src:url('../assets/plex-mono-normal-500.woff2') format('woff2');font-style:normal;font-weight:500;font-display:swap}
+    :root{
+      --ink:#0d0d0d;
+      --paper:#fafafa;
+      --white:#fff;
+      --gray-1:#6e6e6e;
+      --gray-2:#9a9a9a;
+      --gray-3:#c9c9c9;
+      --rule-dark:#2c2c2c;
+      --rule-light:#e2e2e2;
+      --max:1280px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ink);color:var(--paper);font:400 16px/1.6 'Plex Sans',Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    ::selection{background:var(--paper);color:var(--ink)}
+    .article ::selection{background:var(--ink);color:var(--white)}
+    a{color:inherit;text-decoration-thickness:1px;text-underline-offset:5px}
+    a:hover{text-decoration-thickness:2px}
+    a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+    .mono{font-family:'Plex Mono','Courier New',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:1.6}
+    .wrap{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
+
+    /* ---------- dark hero ---------- */
+    .hero{min-height:100svh;display:flex;flex-direction:column;background:var(--ink)}
+    .hero-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:26px}
+    .wordmark{font-weight:500;font-size:19px;letter-spacing:-.01em;text-decoration:none;line-height:1}
+    .hero-nav{display:flex;align-items:center;gap:clamp(18px,3vw,40px)}
+    .hero-nav a{font-size:13px;color:var(--gray-2);text-decoration:none}
+    .hero-nav a:hover{color:var(--paper);text-decoration:underline;text-underline-offset:6px}
+    .hero-field{flex:1;min-height:30vh}
+    .hero-bottom{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(40px,7vw,120px);align-items:end;padding-bottom:clamp(48px,6vh,84px)}
+    .scanline-title{
+      margin:0;font-weight:500;letter-spacing:-.02em;line-height:1;
+      font-size:32px;max-width:none;
+      color:var(--paper);
+      background:repeating-linear-gradient(0deg,var(--paper) 0 1px,rgba(250,250,250,.32) 1px 3px);
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    @supports not ((-webkit-background-clip:text) or (background-clip:text)){
+      .scanline-title{background:none;-webkit-text-fill-color:currentColor}
+    }
+    .hero-side{max-width:38ch;padding-bottom:6px}
+    .hero-thesis{font-family:'Plex Mono','Courier New',monospace;font-size:15px;line-height:1.7;letter-spacing:0;color:var(--gray-3);margin:0 0 22px;text-transform:none}
+    .hero-status{margin:0;color:var(--gray-2);font-size:10px}
+    .hero-status .dot{display:inline-block;width:6px;height:6px;border:1px solid var(--gray-2);border-radius:50%;margin-right:8px;vertical-align:1px}
+
+    /* ---------- hairline band ---------- */
+    .hairlines{display:block;width:100%;height:clamp(90px,16vh,180px);background:repeating-linear-gradient(0deg,var(--ink) 0 3px,var(--rule-dark) 3px 4px)}
+
+    /* ---------- white editorial article ---------- */
+    .article{background:var(--white);color:var(--ink);padding-top:clamp(80px,12vh,150px)}
+    .article-grid{display:grid;grid-template-columns:minmax(0,434px) minmax(0,710px);gap:0 46px}
+    .rail{position:relative}
+    .rail-inner{position:sticky;top:110px}
+    .rail-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+    .rail-list a{display:flex;align-items:baseline;gap:12px;font-family:'Plex Mono','Courier New',monospace;font-size:15.6px;letter-spacing:.01em;text-transform:none;line-height:1.5;color:var(--gray-1);text-decoration:none}
+    .rail-list a:hover{color:var(--ink)}
+    .rail-list .bullet{display:inline-block;width:6px;height:6px;border:1px solid var(--gray-2);border-radius:50%;flex:none;transform:translateY(-1px)}
+    .rail-list a[aria-current="true"]{color:var(--ink)}
+    .rail-list a[aria-current="true"] .bullet{background:var(--ink);border-color:var(--ink)}
+    .reader{min-width:0;max-width:710px}
+    .section{padding-bottom:clamp(120px,22vh,240px);scroll-margin-top:90px}
+    .kicker{color:var(--gray-1);margin:0 0 26px}
+    .section h2{font-weight:500;font-size:18px;letter-spacing:-.01em;line-height:1.35;margin:0 0 22px;max-width:none}
+    .thesis{font-family:'Plex Mono','Courier New',monospace;font-size:18px;line-height:1.55;letter-spacing:0;color:var(--ink);margin:0 0 30px;max-width:52ch;text-transform:none}
+    .section p.body{font-size:15px;line-height:1.65;color:#3a3a3a;margin:0 0 20px;max-width:62ch}
+    .section p.body:last-of-type{margin-bottom:0}
+    .flow{list-style:none;margin:44px 0 0;padding:0;border-top:1px solid var(--ink)}
+    .flow li{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--rule-light);font-size:14px;line-height:1.55;color:#3a3a3a}
+    .flow .step-id{font-family:'Plex Mono','Courier New',monospace;font-size:11px;letter-spacing:.06em;color:var(--gray-1);padding-top:2px}
+    .flow strong{font-weight:500;color:var(--ink)}
+    .future-note{border:1px dashed var(--gray-2);padding:20px 22px;margin-top:44px}
+    .future-note p{margin:0;font-size:13.5px;line-height:1.6;color:var(--gray-1)}
+    .future-note .mono{display:block;margin-bottom:10px;color:var(--gray-1)}
+
+    /* ---------- contact / footer ---------- */
+    .contact{background:var(--white);color:var(--ink);border-top:1px solid var(--ink);padding-block:clamp(70px,10vh,120px) clamp(90px,14vh,160px)}
+    .contact-grid{display:grid;grid-template-columns:minmax(0,434px) minmax(0,710px);gap:0 46px}
+    .contact h2{font-weight:500;font-size:18px;letter-spacing:-.01em;line-height:1.35;margin:0 0 22px;max-width:none}
+    .contact p{font-size:15px;line-height:1.65;color:#3a3a3a;max-width:62ch;margin:0 0 30px}
+    .contact .cta{display:inline-block;font-family:'Plex Mono','Courier New',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);padding:14px 22px;color:var(--ink)}
+    .contact .cta:hover{background:var(--ink);color:var(--white)}
+    .site-footer{background:var(--ink);color:var(--gray-2)}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-block:26px}
+    .footer-inner p{margin:0;font-size:10px}
+    .footer-inner a{color:var(--gray-2);font-size:11px;text-decoration:none}
+    .footer-inner a:hover{color:var(--paper);text-decoration:underline;text-underline-offset:5px}
+
+    /* ---------- responsive ---------- */
+    @media(max-width:820px){
+      .wrap{width:min(calc(100% - 40px),var(--max))}
+      .hero-bottom{grid-template-columns:1fr;gap:36px;align-items:start}
+      .hero-side{max-width:46ch}
+      .article-grid,.contact-grid{grid-template-columns:1fr;gap:0}
+      .rail-inner{position:static;padding:0 0 34px;margin-bottom:34px;border-bottom:1px solid var(--rule-light)}
+      .rail-list{flex-direction:row;flex-wrap:wrap;gap:10px 22px}
+      .rail-list a{font-size:13px}
+      .section{padding-bottom:110px;scroll-margin-top:24px}
+    }
+    @media(max-width:400px){
+      .wrap{width:min(calc(100% - 32px),var(--max))}
+      .hero-head{padding-block:20px}
+      .hero-nav{gap:16px}
+      .hero-nav a{font-size:12px}
+      .scanline-title{font-size:clamp(25px,8.2vw,32px)}
+      .hero-field{min-height:22vh}
+      .flow li{grid-template-columns:52px 1fr;gap:12px}
+      .contact .cta{width:100%;text-align:center}
+      .footer-inner{flex-direction:column;align-items:flex-start;gap:10px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .scanline-title{background:none;-webkit-text-fill-color:currentColor;color:var(--paper)}
+    }
+  </style>
+</head>
+<body>
+  <!-- ===================== dark hero ===================== -->
+  <header class="hero" id="top">
+    <div class="wrap hero-head">
+      <a class="wordmark" href="#top" aria-label="caly, back to top">caly</a>
+      <nav class="hero-nav" aria-label="Primary">
+        <a href="#the-gap">The idea</a>
+        <a href="mailto:annakuzn09@gmail.com?subject=caly%20%E2%80%94%20early%20conversation">Get in touch</a>
+      </nav>
+    </div>
+    <div class="hero-field" aria-hidden="true"></div>
+    <div class="wrap hero-bottom">
+      <h1 class="scanline-title">Making legal AI learn from the work.</h1>
+      <div class="hero-side">
+        <p class="hero-thesis">Pre-launch software for law firms. caly is designed to turn lawyers’ verified corrections on AI-assisted work into reusable private tests — run on the firm’s own matters, not public benchmarks.</p>
+        <p class="hero-status mono"><span class="dot" aria-hidden="true"></span>In development · No product or demo yet</p>
+      </div>
+    </div>
+    <div class="hairlines" aria-hidden="true"></div>
+  </header>
+
+  <!-- ===================== white editorial article ===================== -->
+  <main class="article">
+    <div class="wrap article-grid">
+      <nav class="rail" aria-label="Sections">
+        <div class="rail-inner">
+          <ul class="rail-list">
+            <li><a href="#the-gap"><span class="bullet" aria-hidden="true"></span>The gap</a></li>
+            <li><a href="#the-mechanism"><span class="bullet" aria-hidden="true"></span>The mechanism</a></li>
+            <li><a href="#the-judgment"><span class="bullet" aria-hidden="true"></span>The judgment</a></li>
+            <li><a href="#the-horizon"><span class="bullet" aria-hidden="true"></span>The horizon</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="reader">
+        <section class="section" id="the-gap" aria-labelledby="gap-heading">
+          <p class="kicker mono">01 — The gap</p>
+          <h2 id="gap-heading">Lawyers catch the errors. The fixes vanish.</h2>
+          <p class="thesis">Every day, lawyers review AI-generated drafts and correct them: a missed clause, a wrong deadline, a misread fact. The correction goes into the document — and nowhere else.</p>
+          <p class="body">The firm’s judgment is real, repeated and expensive. But once the matter closes, there is no record of what the AI got wrong, how often, or whether the next model version makes the same mistake again.</p>
+          <p class="body">Public benchmarks don’t answer this. They don’t know the firm’s precedents, its house style, or the clauses its clients actually sign.</p>
+        </section>
+        <section class="section" id="the-mechanism" aria-labelledby="mechanism-heading">
+          <p class="kicker mono">02 — The mechanism</p>
+          <h2 id="mechanism-heading">A verified correction becomes a private test.</h2>
+          <p class="thesis">caly is designed to sit inside the firm’s existing legal and AI workflows and keep the evidence each review already produces.</p>
+          <p class="body">When a lawyer verifies a correction, that moment — the task, the source documents, the AI’s draft and the lawyer’s fix — is intended to become a reusable evaluation case, private to the firm.</p>
+          <ol class="flow">
+            <li><span class="step-id">01</span><span><strong>The task.</strong> What the lawyer asked the AI tool to do.</span></li>
+            <li><span class="step-id">02</span><span><strong>The sources.</strong> The documents the answer should rest on.</span></li>
+            <li><span class="step-id">03</span><span><strong>The draft.</strong> What the model actually produced.</span></li>
+            <li><span class="step-id">04</span><span><strong>The correction.</strong> What the lawyer changed, verified as right.</span></li>
+            <li><span class="step-id">05</span><span><strong>The test.</strong> A reusable case in the firm’s private evaluation set.</span></li>
+          </ol>
+        </section>
+        <section class="section" id="the-judgment" aria-labelledby="judgment-heading">
+          <p class="kicker mono">03 — The judgment</p>
+          <h2 id="judgment-heading">Lawyers stay responsible. The errors stop repeating unseen.</h2>
+          <p class="thesis">caly does not review legal work and does not replace professional judgment. Lawyers verify. The system is designed to remember what verification found.</p>
+          <p class="body">With a private set of cases grounded in real matters, the firm can test the models it relies on: surface errors that keep recurring across its work, and catch regressions when a provider ships an update that breaks an answer which used to pass.</p>
+          <p class="body">Nothing here requires lawyers to build datasets or run an ML team. The input is the review they already do.</p>
+        </section>
+        <section class="section" id="the-horizon" aria-labelledby="horizon-heading">
+          <p class="kicker mono">04 — The horizon</p>
+          <h2 id="horizon-heading">Knowledge the firm owns, across providers.</h2>
+          <p class="thesis">The initial scope is evaluation: capture, private cases, recurring-error and regression testing. That is what we are building now.</p>
+          <p class="body">Longer term, the same verified record could travel further — but these are directions, not capabilities available today:</p>
+          <div class="future-note">
+            <span class="mono">Future direction · not yet built</span>
+            <p>Fine-tuning open-weight models on the firm’s verified data, portable intelligence that carries across AI providers, and on-prem or self-hosted deployment. None of this is part of the current product scope.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ===================== contact ===================== -->
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="wrap contact-grid">
+        <div aria-hidden="true"></div>
+        <div>
+          <p class="kicker mono">Get in touch</p>
+          <h2 id="contact-heading">We’re early. We’d like to hear where your corrections go.</h2>
+          <p>caly is pre-launch: the scope is defined and the architecture is planned, but there is no working product, no users and no revenue yet. If your firm already reviews AI-assisted legal work, we want to understand how you handle what the review finds.</p>
+          <a class="cta" href="mailto:annakuzn09@gmail.com?subject=caly%20%E2%80%94%20early%20conversation">Get in touch&nbsp;↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="mono">caly · In development</p>
+      <p>This page illustrates intended capabilities. It is not a working demo, and examples are illustrative only.</p>
+      <a href="mailto:annakuzn09@gmail.com?subject=caly%20%E2%80%94%20early%20conversation">annakuzn09@gmail.com ↗</a>
+    </div>
+  </footer>
+
+  <script>
+    /* Rail active-state only; content is fully accessible without JS. */
+    (function(){
+      var links=[].slice.call(document.querySelectorAll('.rail-list a'));
+      if(!links.length)return;
+      var sections=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+      var current=null;
+      function update(){
+        var line=window.innerHeight*0.35,best=null;
+        sections.forEach(function(s){
+          if(!s)return;
+          var r=s.getBoundingClientRect();
+          if(r.top<=line&&r.bottom>line)best=s.id;
+        });
+        if(!best)sections.forEach(function(s){if(s&&s.getBoundingClientRect().top<=line)best=s.id;});
+        if(best===current)return;
+        current=best;
+        links.forEach(function(a){
+          if(a.getAttribute('href')==='#'+best)a.setAttribute('aria-current','true');
+          else a.removeAttribute('aria-current');
+        });
+      }
+      window.addEventListener('scroll',update,{passive:true});
+      window.addEventListener('resize',update);
+      update();
+    })();
+  </script>
+</body>
+</html>
