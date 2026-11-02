@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="caly is building a private AI evaluation layer for law firms: turning lawyers’ verified corrections into tests grounded in real legal work.">
+  <title>caly — Make every correction count</title>
+  <style>
+    @font-face{font-family:Newsreader;src:url('./assets/newsreader-normal.woff2') format('woff2');font-style:normal;font-weight:300 400;font-display:swap}
+    @font-face{font-family:Newsreader;src:url('./assets/newsreader-italic.woff2') format('woff2');font-style:italic;font-weight:400;font-display:swap}
+    @font-face{font-family:Plex Sans;src:url('./assets/plex-sans-normal.woff2') format('woff2');font-style:normal;font-weight:400 500;font-display:swap}
+    @font-face{font-family:Plex Mono;src:url('./assets/plex-mono-normal-400.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+    @font-face{font-family:Plex Mono;src:url('./assets/plex-mono-normal-500.woff2') format('woff2');font-style:normal;font-weight:500;font-display:swap}
+    :root{--paper:#f5f2eb;--raised:#fbf9f4;--ink:#17160f;--graphite:#5a574f;--rule:#d8d2c4;--strong:#b9b2a2;--red:#a3271c;--blue:#24487a;--blue-wash:#e6ecf3;--max:1200px}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.58 'Plex Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    ::selection{background:var(--blue-wash);color:var(--ink)}
+    a{color:inherit;text-decoration-thickness:1px;text-underline-offset:5px}
+    a:hover{text-decoration-thickness:2px}
+    a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+    button:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+    .wrap{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
+    .mono{font-family:'Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5}
+    .site-header{border-bottom:1px solid var(--rule)}
+    .header-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .wordmark{font-family:Newsreader,Georgia,serif;font-size:31px;line-height:1;text-decoration:none;letter-spacing:-.055em}
+    .header-right{display:flex;align-items:center;gap:32px}
+    .status{border:1px solid var(--strong);padding:7px 10px;white-space:nowrap;color:var(--graphite)}
+    .nav-link{font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}
+    .nav-link:hover{text-decoration:underline;text-underline-offset:6px}
+    .hero{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.88fr);gap:clamp(42px,6vw,100px);padding-block:clamp(64px,6vw,92px) 112px;align-items:start}
+    .eyebrow{color:var(--blue);margin:0 0 20px}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2{font-family:Newsreader,Georgia,serif;font-weight:300;letter-spacing:-.025em}
+    h1{font-size:clamp(46px,5vw,72px);line-height:1.055;max-width:11.3ch;margin-bottom:24px;text-wrap:balance}
+    .hero-lead{max-width:55ch;font-size:18px;line-height:1.62;color:#3e3d37;margin-bottom:22px;text-wrap:pretty}
+    .actions{display:flex;align-items:center;gap:23px;flex-wrap:wrap}
+    .button{min-height:50px;display:inline-flex;align-items:center;gap:27px;padding:11px 18px;background:var(--ink);color:var(--raised);text-decoration:none;border:1px solid var(--ink);font-size:14px;font-weight:500;border-radius:2px;transition:background-color .18s ease,transform .18s ease}
+    .button:hover{background:#38372d;text-decoration:none}
+    .button:active{transform:scale(.96)}
+    .button .arrow{transition:transform .18s ease}
+    .button:hover .arrow{transform:translateX(2px)}
+    .quiet-link{font-size:14px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--strong);padding-block:10px}
+    .quiet-link:hover{border-bottom-color:var(--ink)}
+    .hero-note{color:var(--graphite);margin:24px 0 0;font-size:11px;letter-spacing:0;text-transform:none}
+    .specimen{min-width:0;position:relative}
+    .figure-label{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--graphite);margin-bottom:15px}
+    .doc{background:var(--raised);border:1px solid var(--rule);padding:25px 27px 26px;box-shadow:0 16px 45px rgba(30,26,16,.035)}
+    .doc-top{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:12px;color:var(--graphite)}
+    .doc-question{font-family:Newsreader,Georgia,serif;font-size:25px;line-height:1.2;margin:26px 0 18px}
+    .doc-copy{font-size:16px;line-height:1.65;margin:0}
+    del{color:var(--red);text-decoration-color:var(--red);text-decoration-thickness:1.5px}
+    ins{color:var(--red);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px;text-decoration-thickness:1px}
+    .caret{color:var(--red);font-size:21px;line-height:0}
+    .margin-note{border-top:1px solid var(--rule);padding-top:16px;margin:22px 0 0;font:italic 400 18px/1.3 Newsreader,Georgia,serif;color:var(--red)}
+    .margin-note span{font:400 10px/1.5 'Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
+    .connector{height:42px;width:100%;display:block;overflow:visible}
+    .connector path{stroke:var(--blue);stroke-width:1;fill:none;vector-effect:non-scaling-stroke}
+    .connector circle{fill:var(--blue)}
+    .test{border:1px solid #c3d0df;background:var(--blue-wash);padding:19px 23px 18px}
+    .test-head{color:var(--blue);border-bottom:1px solid #c3d0df;padding-bottom:10px;margin-bottom:12px;display:flex;justify-content:space-between;gap:12px}
+    .test dl{display:grid;grid-template-columns:75px 1fr;gap:8px 12px;margin:0;font-size:13px;line-height:1.45}
+    .test dt{color:var(--graphite)}.test dd{margin:0}
+    .figcaption{color:var(--graphite);margin:16px 0 0;font-size:10px;letter-spacing:0;text-transform:none;line-height:1.6}
+    .section{border-top:1px solid var(--rule);padding-top:22px;padding-bottom:clamp(100px,13vw,170px);scroll-margin-top:28px}
+    .section-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+    .rail{grid-column:span 2;color:var(--graphite);padding-top:4px}
+    .section-main{grid-column:3/-1;min-width:0}
+    .section-heading{font-size:clamp(37px,4vw,59px);line-height:1.1;max-width:15ch;margin:0 0 28px;text-wrap:balance}
+    .section-intro{max-width:64ch;color:#3e3d37;margin-bottom:0}
+    .problem .section-main{max-width:800px}
+    .problem .section-heading{max-width:15ch}
+    .problem-copy{font-family:Newsreader,Georgia,serif;font-size:clamp(22px,2.15vw,30px);line-height:1.32;max-width:31em;color:#3e3d37;margin:0}
+    .diagram{margin-top:66px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--strong)}
+    .step{padding:25px 18px 0 0;position:relative;min-width:0}
+    .step::before{content:"";width:8px;height:8px;border:1px solid var(--ink);background:var(--paper);position:absolute;top:-4.5px;left:0;border-radius:50%}
+    .step:nth-child(4)::before{border-color:var(--red);background:var(--red)}
+    .step:nth-child(5)::before{border-color:var(--blue);background:var(--blue)}
+    .step-num{color:var(--graphite);margin:0 0 18px}
+    .step:nth-child(4) .step-num{color:var(--red)}.step:nth-child(5) .step-num{color:var(--blue)}
+    .step h3{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:26px;line-height:1.13;letter-spacing:-.015em;margin-bottom:12px}
+    .step p:last-child{font-size:14px;color:var(--graphite);line-height:1.5;margin-bottom:0;max-width:21ch}
+    .diagram-takeaway{font:400 27px/1.3 Newsreader,Georgia,serif;max-width:36em;margin:55px 0 0}
+    .diagram-takeaway em{font-style:italic;color:var(--blue)}
+    .diagram-caption{margin:14px 0 0;color:var(--graphite);font-size:10px;letter-spacing:0;text-transform:none}
+    .eval-grid{display:grid;grid-template-columns:minmax(0,1.36fr) minmax(240px,.7fr);gap:clamp(35px,5vw,75px);margin-top:65px;align-items:start}
+    .ledger{border-top:1px solid var(--strong);overflow-x:auto;max-width:100%}
+    .ledger table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px;line-height:1.45;text-align:left}
+    .ledger th,.ledger td{border-bottom:1px solid var(--rule);padding:17px 10px;vertical-align:top}
+    .ledger th:first-child,.ledger td:first-child{padding-left:0;white-space:nowrap}
+    .ledger thead th{font-weight:400;color:var(--graphite);font-family:'Plex Mono',monospace;font-size:10px;line-height:1.5;letter-spacing:.02em;white-space:normal}
+    .ledger tbody td:first-child{font-family:'Plex Mono',monospace;color:var(--blue);font-size:11px}
+    .pass,.fail{color:var(--blue);font-size:12px;white-space:nowrap}
+    .fail{color:var(--graphite)}
+    .regression{color:var(--blue);font:400 11px/1.5 'Plex Mono',monospace;letter-spacing:0;margin:15px 0 0}
+    .ledger-caption{color:var(--graphite);font-size:11px;margin-top:14px}
+    .eval-notes article{border-top:1px solid var(--rule);padding:17px 0 21px}
+    .eval-notes article:first-child{border-top:1px solid var(--strong)}
+    .eval-notes h3{font:400 23px/1.2 Newsreader,Georgia,serif;margin:0 0 8px}
+    .eval-notes p{font-size:14px;line-height:1.55;color:var(--graphite);margin:0}
+    .phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:63px}
+    .phase{border:1px solid var(--strong);padding:28px 30px 29px;min-width:0}
+    .phase.future{border-style:dashed;color:var(--graphite)}
+    .phase .mono{color:var(--blue);margin-bottom:28px}
+    .phase.future .mono{color:var(--graphite)}
+    .phase h3{font:300 clamp(29px,3vw,38px)/1.13 Newsreader,Georgia,serif;margin-bottom:25px;max-width:14ch}
+    .phase ul{list-style:none;margin:0;padding:0}
+    .phase li{border-top:1px solid var(--rule);padding:13px 0;font-size:15px;line-height:1.5}
+    .phase li:last-child{padding-bottom:0}
+    .phase-note{color:var(--graphite);margin-top:18px}
+    .close{padding-block:25px 145px}
+    .close .section-main{max-width:740px}
+    .close h2{font-size:clamp(46px,5.6vw,80px);line-height:1.04;max-width:13ch;margin-bottom:29px}
+    .close p{max-width:57ch;color:#3e3d37;margin-bottom:30px}
+    .site-footer{border-top:1px solid var(--rule)}
+    .footer-inner{min-height:92px;padding-block:20px;display:flex;justify-content:space-between;gap:24px;align-items:center;flex-wrap:wrap}
+    .footer-inner p{font-size:11px;color:var(--graphite);margin:0}
+    .footer-inner a{font-size:12px}
+    @media(max-width:1040px){.hero{grid-template-columns:1.08fr .92fr;gap:40px}.doc{padding:20px}.section-grid{gap:18px}.rail{grid-column:span 1}.section-main{grid-column:2/-1}.step h3{font-size:23px}}
+    @media(max-width:760px){.wrap{width:min(calc(100% - 40px),var(--max))}.header-inner{height:66px}.header-right{gap:14px}.hero{display:block;padding-block:74px 100px}.hero h1{max-width:13ch}.hero-lead{font-size:17px}.specimen{max-width:520px;margin-top:76px}.section{padding-bottom:110px}.section-grid{display:block}.rail{margin-bottom:23px}.section-heading{margin-bottom:23px}.diagram{display:block;border-top:0;border-left:1px solid var(--strong);margin-top:50px;margin-left:4px}.step{padding:0 0 29px 23px;min-height:102px}.step::before{top:3px;left:-4.5px}.step-num{margin-bottom:8px}.step h3{font-size:25px;margin-bottom:5px}.step p:last-child{max-width:42ch}.diagram-takeaway{margin-top:35px}.eval-grid{grid-template-columns:minmax(0,1fr);margin-top:45px}.phase-grid{grid-template-columns:1fr}.close{padding-bottom:100px}}
+    @media(max-width:480px){.status{font-size:9px;padding:6px 7px}.header-right{gap:10px}.nav-link{font-size:13px}.hero{padding-top:62px}.eyebrow{font-size:10px}.hero h1{font-size:clamp(41px,12vw,56px);max-width:12ch}.actions{align-items:stretch;gap:12px}.button{justify-content:space-between}.quiet-link{margin-left:3px}.doc-question{font-size:23px}.doc{padding:18px}.test{padding:17px}.test dl{grid-template-columns:64px 1fr}.section-heading{font-size:clamp(35px,10vw,46px)}.phase{padding:23px}.footer-inner{align-items:start;flex-direction:column;gap:12px}}
+    @media(max-width:360px){.header-right .nav-link{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.button .arrow{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top" aria-label="caly, back to top">caly</a>
+      <div class="header-right"><span class="status mono">Pre-launch · concept draft</span><a class="nav-link" href="mailto:annakuzn09@gmail.com?subject=caly%20%E2%80%94%20early%20conversation">Contact <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow mono">A private AI evaluation layer for law firms</p>
+        <h1 id="hero-title">Make every correction count.</h1>
+        <p class="hero-lead">We’re building caly to turn lawyers’ verified corrections into private tests for the AI their firm uses. The result: a way to evaluate models on the firm’s actual legal work, not just public benchmarks.</p>
+        <div class="actions"><a class="button" href="mailto:annakuzn09@gmail.com?subject=caly%20%E2%80%94%20early%20conversation"><span>Talk to the founders</span><span class="arrow" aria-hidden="true">↗</span></a><a class="quiet-link" href="#approach">See the approach ↓</a></div>
+        <p class="hero-note mono">In development · No product or demo available yet</p>
+      </div>
+      <div class="specimen" aria-label="Illustrative example of a lawyer correction becoming a private test case">
+        <div class="figure-label mono"><span>From the margin</span><span>01 / 02</span></div>
+        <div class="doc">
+          <div class="doc-top mono"><span>Illustrative task</span><span>Lease review</span></div>
+          <p class="doc-question">What notice must the tenant give to exercise the break option?</p>
+          <p class="doc-copy">AI draft: “The tenant may terminate on <del>three months’</del> <span class="caret" aria-hidden="true">⌃</span><ins>six months’ written</ins> notice.”</p>
+          <p class="margin-note"><span>Lawyer · verified correction</span>“Clause 14.2 requires written notice, six months in advance.”</p>
+        </div>
+        <svg class="connector" viewBox="0 0 400 42" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M24 0 V24 H380 V42"/><circle cx="380" cy="40" r="2.3"/></svg>
+        <div class="test">
+          <div class="test-head mono"><span>Private test</span><span>LEASE-014</span></div>
+          <dl><dt>Task</dt><dd>Break-option notice period</dd><dt>Source</dt><dd>Lease, clause 14.2</dd><dt>Expected</dt><dd>Six months’ written notice</dd><dt>Origin</dt><dd>Verified lawyer correction</dd></dl>
+        </div>
+        <p class="figcaption mono">Fig. 1 — Fictional example of the intended mechanism. Not a product screenshot.</p>
+      </div>
+    </section>
+    <section class="section problem wrap" id="why" aria-labelledby="why-heading">
+      <div class="section-grid"><div class="rail mono">§ 01 / The gap</div><div class="section-main"><h2 class="section-heading" id="why-heading">The firm corrects its AI. The next model doesn’t know.</h2><p class="problem-copy">A lawyer catches a missed clause, fixes the answer and moves on. That judgment is valuable—but unless it becomes a reusable test, the firm has little way to check whether the same error returns.</p></div></div>
+    </section>
+    <section class="section wrap" id="approach" aria-labelledby="approach-heading">
+      <div class="section-grid"><div class="rail mono">§ 02 / The mechanism</div><div class="section-main"><h2 class="section-heading" id="approach-heading">From legal work to a private test.</h2><p class="section-intro">caly is designed to connect the evidence a firm already produces in its AI workflows: the request, the documents, the output and the lawyer’s verified correction. The correction becomes a test the firm can use again.</p>
+        <div class="diagram" aria-label="Five stages: task, sources, AI output, verified correction, private test">
+          <div class="step"><p class="step-num mono">01 / Task</p><h3>The request</h3><p>What the lawyer asked the AI tool to do.</p></div>
+          <div class="step"><p class="step-num mono">02 / Sources</p><h3>The record</h3><p>The documents the answer should rest on.</p></div>
+          <div class="step"><p class="step-num mono">03 / Output</p><h3>The draft</h3><p>What the model actually produced.</p></div>
+          <div class="step"><p class="step-num mono">04 / Verified</p><h3>The correction</h3><p>What the lawyer changed—and why.</p></div>
+          <div class="step"><p class="step-num mono">05 / Retained</p><h3>The test</h3><p>A reusable case in the firm’s private evaluation set.</p></div>
+        </div>
+        <p class="diagram-takeaway">Lawyers verify the legal work. <em>They don’t have to build datasets or run an ML team.</em></p>
+        <p class="diagram-caption mono">Fig. 2 — Intended workflow. Integrations are planned, not live.</p>
+      </div></div>
+    </section>
+    <section class="section wrap" id="evaluation" aria-labelledby="evaluation-heading">
+      <div class="section-grid"><div class="rail mono">§ 03 / Evaluation</div><div class="section-main"><h2 class="section-heading" id="evaluation-heading">Test models against the work that matters.</h2><p class="section-intro">The same private cases can be used to compare providers, find repeated mistakes and check whether a model update breaks an answer that used to pass.</p>
+        <div class="eval-grid"><div><div class="ledger" role="region" aria-label="Illustrative model comparison table, scrollable horizontally" tabindex="0"><table><thead><tr><th scope="col">Private test</th><th scope="col">Provider A<br>previous</th><th scope="col">Provider B</th><th scope="col">Provider A<br>after update</th></tr></thead><tbody><tr><td>LEASE-014</td><td><span class="pass">● Pass</span></td><td><span class="pass">● Pass</span></td><td><span class="fail">○ Fail</span></td></tr><tr><td>LEASE-022</td><td><span class="pass">● Pass</span></td><td><span class="fail">○ Fail</span></td><td><span class="pass">● Pass</span></td></tr><tr><td>NDA-007</td><td><span class="fail">○ Fail</span></td><td><span class="pass">● Pass</span></td><td><span class="fail">○ Fail</span></td></tr></tbody></table></div><p class="regression">↳ LEASE-014: passed before the update; now fails.</p><p class="ledger-caption">Fig. 3 — Hypothetical outcomes. No actual models, customers or results shown.</p></div>
+          <div class="eval-notes"><article><h3>Recurring errors</h3><p>Designed to surface the mistakes that keep appearing across a firm’s work.</p></article><article><h3>Provider comparison</h3><p>Designed to run the same firm-specific cases against different AI providers.</p></article><article><h3>Regression flags</h3><p>Designed to show when an update changes a previously passing result.</p></article></div>
+        </div>
+      </div></div>
+    </section>
+    <section class="section wrap" id="roadmap" aria-labelledby="roadmap-heading">
+      <div class="section-grid"><div class="rail mono">§ 04 / Scope</div><div class="section-main"><h2 class="section-heading" id="roadmap-heading">First, make the knowledge measurable. Then make it portable.</h2><p class="section-intro">We’re starting with evaluation. Fine-tuning and self-hosting are longer-term directions, not capabilities available today.</p>
+        <div class="phase-grid"><div class="phase"><p class="mono">Initial scope · in development</p><h3>A private evaluation layer</h3><ul><li>Capture tasks, source documents, AI outputs and verified corrections.</li><li>Turn corrections into firm-specific evaluation cases.</li><li>Compare models and surface recurring errors and regressions.</li></ul></div><div class="phase future"><p class="mono">Longer term · not yet built</p><h3>Intelligence the firm can carry forward</h3><ul><li>Use the firm’s verified data to fine-tune open-weight models.</li><li>Support deployment on the firm’s own infrastructure.</li><li>Carry evaluations and improvements across AI providers.</li></ul></div></div><p class="phase-note mono">Solid = initial scope. Dashed = future direction.</p>
+      </div></div>
+    </section>
+    <section class="section close wrap" id="contact" aria-labelledby="contact-heading"><div class="section-grid"><div class="rail mono">§ 05 / An invitation</div><div class="section-main"><h2 id="contact-heading">We’re early. Let’s talk about the work.</h2><p>caly is pre-launch. We’ve defined the initial scope and planned the architecture; we don’t have users or revenue yet. If your firm is already reviewing AI-generated legal work, we’d like to understand where those corrections go.</p><a class="button" href="mailto:annakuzn09@gmail.com?subject=caly%20%E2%80%94%20early%20conversation"><span>Talk to the founders</span><span class="arrow" aria-hidden="true">↗</span></a></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><p class="mono">caly · Concept draft</p><p>Product in development. All examples are illustrative.</p><a href="mailto:annakuzn09@gmail.com?subject=caly%20%E2%80%94%20early%20conversation">Contact the founders ↗</a></div></footer>
+</body>
+</html>
